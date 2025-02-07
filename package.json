@@ -1,0 +1,52 @@
+{
+	"name": "invoice0",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev:ui": "vinxi dev",
+		"dev:zero-cache": "zero-cache-dev -p app/lib/schema.ts",
+		"dev:db-up": "docker compose --env-file .env -f ./docker/docker-compose.yml up",
+		"dev:db-down": "docker compose --env-file .env -f ./docker/docker-compose.yml down",
+		"dev:clean": "source .env && docker volume rm -f invoice0_invoice0_pgdata && rm -rf \"${ZERO_REPLICA_FILE}\"*",
+		"build": "tsc -b && vinxi build",
+		"db": "drizzle-kit",
+		"auth": "npx @better-auth/cli",
+		"auth:generate": "npx @better-auth/cli generate -y --output app/lib/db/schema/auth.schema.ts",
+		"lint": "npx @biomejs/biome check --write ."
+	},
+	"dependencies": {
+		"@rocicorp/zero": "^0.13.2025013101",
+		"@tanstack/react-router": "^1.99.9",
+		"@tanstack/router-devtools": "^1.99.9",
+		"@tanstack/start": "^1.99.12",
+		"better-auth": "^1.1.16",
+		"drizzle-orm": "^0.39.2",
+		"drizzle-zero": "^0.4.0",
+		"pg": "^8.13.1",
+		"postgres": "^3.4.5",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"vinxi": "^0.5.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.7.9",
+		"@types/pg": "^8.11.11",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"@vitejs/plugin-react": "^4.3.4",
+		"drizzle-kit": "^0.30.4",
+		"typescript": "^5.7.3",
+		"vite-tsconfig-paths": "^5.1.4"
+	},
+	"trustedDependencies": [
+		"@rocicorp/zero-sqlite3"
+	],
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@rocicorp/zero-sqlite3"
+		]
+	},
+	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+}
