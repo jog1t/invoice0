@@ -16,7 +16,7 @@ export const invoiceStatus = pgEnum("status", [
 ]);
 
 export const invoice = pgTable("invoice", {
-	id: uuid("id").primaryKey(),
+	id: text("id").primaryKey(),
 	key: text("key").notNull().unique(),
 	orgId: text("org_id")
 		.notNull()
@@ -29,7 +29,7 @@ export const invoice = pgTable("invoice", {
 });
 
 export const invoiceItem = pgTable("invoice_item", {
-	id: uuid("id").primaryKey(),
+	id: text("id").primaryKey(),
 	invoiceId: text("invoice_id")
 		.notNull()
 		.references(() => invoice.id),
