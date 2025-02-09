@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "./db";
-import { jwt } from "better-auth/plugins";
+import { jwt, organization } from "better-auth/plugins";
 
 export const auth = betterAuth({
 	baseURL: process.env.VITE_BASE_URL,
@@ -9,7 +9,7 @@ export const auth = betterAuth({
 		provider: "pg",
 	}),
 
-	plugins: [jwt()],
+	plugins: [jwt(), organization()],
 
 	// services
 	emailAndPassword: {

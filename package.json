@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev:ui": "vinxi dev",
-		"dev:zero-cache": "zero-cache-dev -p app/lib/schema.ts",
+		"dev:zero-cache": "zero-cache-dev -p app/lib/zero.ts",
 		"dev:db-up": "docker compose --env-file .env -f ./docker/docker-compose.yml up",
 		"dev:db-down": "docker compose --env-file .env -f ./docker/docker-compose.yml down",
 		"dev:clean": "source .env && docker volume rm -f invoice0_invoice0_pgdata && rm -rf \"${ZERO_REPLICA_FILE}\"*",

@@ -9,6 +9,9 @@ const logout = createServerFn({ method: "POST" }).handler(async () => {
 
 export const Route = createFileRoute("/_auth/hello")({
 	component: RouteComponent,
+	loader: ({ context }) => {
+		return { user: context.user };
+	},
 });
 
 function RouteComponent() {
@@ -16,7 +19,7 @@ function RouteComponent() {
 	return (
 		<div>
 			Hello "/_auth/hello"!
-			{JSON.stringify(Route.useRouteContext().session, null, 2)}
+			{JSON.stringify(Route.useLoaderData().user, null, 2)}
 			<button
 				type="button"
 				onClick={() => {
