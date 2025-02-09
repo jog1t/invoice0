@@ -52,6 +52,7 @@ function Home() {
 					authClient.signIn.email({
 						email: "test@test.com",
 						password: "password",
+						callbackURL: "/hello",
 					})
 				}
 			>
