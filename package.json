@@ -22,7 +22,7 @@
 		"@tanstack/start": "^1.99.12",
 		"better-auth": "^1.1.16",
 		"drizzle-orm": "^0.39.2",
-		"drizzle-zero": "^0.4.0",
+		"drizzle-zero": "patch:drizzle-zero@npm%3A0.4.0#~/.yarn/patches/drizzle-zero-npm-0.4.0-cb91376d63.patch",
 		"nodemailer": "^6.10.0",
 		"pg": "^8.13.1",
 		"postgres": "^3.4.5",
@@ -45,10 +45,5 @@
 	"trustedDependencies": [
 		"@rocicorp/zero-sqlite3"
 	],
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@rocicorp/zero-sqlite3"
-		]
-	},
-	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+	"packageManager": "yarn@4.6.0"
 }

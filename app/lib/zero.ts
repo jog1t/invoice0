@@ -31,6 +31,7 @@ export const schema = createZeroSchema(dbSchema, {
 			ip_address: true,
 			user_agent: true,
 			user_id: true,
+			active_organization_id: true,
 		},
 		account: {
 			id: true,
@@ -61,7 +62,50 @@ export const schema = createZeroSchema(dbSchema, {
 			private_key: true,
 			created_at: true,
 		},
+		member: {
+			id: true,
+			user_id: true,
+			organization_id: true,
+			role: true,
+			created_at: true,
+		},
+		organization: {
+			id: true,
+			name: true,
+			created_at: true,
+			slug: true,
+			logo: true,
+			metadata: true,
+		},
+		invitation: {
+			id: true,
+			organization_id: true,
+			role: true,
+			email: true,
+			expires_at: true,
+			status: true,
+			inviter_id: true,
+		},
+		invoice: {
+			id: true,
+			key: true,
+			org_id: true,
+			status: true,
+			created_at: true,
+			updated_at: true,
+		},
+		invoice_item: {
+			id: true,
+			invoice_id: true,
+			description: true,
+			quantity: true,
+			price: true,
+			created_at: true,
+			updated_at: true,
+		},
 	},
+
+	manyToMany: {},
 });
 
 export type Schema = typeof schema;

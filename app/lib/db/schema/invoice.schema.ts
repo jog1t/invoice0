@@ -7,6 +7,7 @@ import {
 	uuid,
 } from "drizzle-orm/pg-core";
 import { organization } from "./auth.schema";
+import { relations } from "drizzle-orm";
 
 export const invoiceStatus = pgEnum("status", [
 	"draft",
@@ -16,7 +17,7 @@ export const invoiceStatus = pgEnum("status", [
 ]);
 
 export const invoice = pgTable("invoice", {
-	id: text("id").primaryKey(),
+	id: uuid("id").defaultRandom().primaryKey().notNull().unique(),
 	key: text("key").notNull().unique(),
 	orgId: text("org_id")
 		.notNull()
@@ -28,9 +29,16 @@ export const invoice = pgTable("invoice", {
 		.$onUpdate(() => new Date()),
 });
 
+export const invoiceRelations = relations(invoice, ({ one }) => ({
+	org: one(organization, {
+		fields: [invoice.orgId],
+		references: [organization.id],
+	}),
+}));
+
 export const invoiceItem = pgTable("invoice_item", {
-	id: text("id").primaryKey(),
-	invoiceId: text("invoice_id")
+	id: uuid("id").defaultRandom().primaryKey().unique(),
+	invoiceId: uuid("invoice_id")
 		.notNull()
 		.references(() => invoice.id),
 	description: text("description").notNull(),
@@ -41,3 +49,10 @@ export const invoiceItem = pgTable("invoice_item", {
 		.notNull()
 		.$onUpdate(() => new Date()),
 });
+
+export const invoiceItemRelations = relations(invoiceItem, ({ one }) => ({
+	invoice: one(invoice, {
+		fields: [invoiceItem.id],
+		references: [invoice.id],
+	}),
+}));
