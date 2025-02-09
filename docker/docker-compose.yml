@@ -4,7 +4,7 @@ services:
     image: postgres:16.2-alpine
     shm_size: 1g
     user: postgres
-    restart: always
+    restart: unless-stopped
     healthcheck:
       test: 'pg_isready -U user --dbname=postgres'
       interval: 10s
@@ -26,6 +26,15 @@ services:
     volumes:
       - invoice0_pgdata:/var/lib/postgresql/data
       - ./:/docker-entrypoint-initdb.d
+  invoice0_mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
+    ports:
+      - 8025:8025
+      - 1025:1025
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
 
 volumes:
   invoice0_pgdata:

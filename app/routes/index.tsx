@@ -57,6 +57,18 @@ function Home() {
 			>
 				Login
 			</button>
+			<button
+				type="button"
+				onClick={() =>
+					authClient.signUp.email({
+						name: "Test",
+						email: "test@test.com",
+						password: "password",
+					})
+				}
+			>
+				Register
+			</button>
 		</>
 	);
 }
