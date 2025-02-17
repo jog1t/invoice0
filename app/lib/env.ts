@@ -3,10 +3,10 @@ import { z } from "zod";
 const clientEnvVariables = z.object({
 	VITE_PUBLIC_ZERO_SERVER: z.string(),
 	VITE_BASE_URL: z.string(),
-	NODE_ENV: z.string(),
 });
 
 const serverEnvVariables = z.object({
+	NODE_ENV: z.string(),
 	DATABASE_URL: z.string(),
 	ZERO_UPSTREAM_DB: z.string(),
 	ZERO_CVR_DB: z.string(),
@@ -27,7 +27,7 @@ const envVariables = clientEnvVariables.merge(serverEnvVariables);
 export const env = (
 	typeof window === "undefined"
 		? envVariables.parse(process.env)
-		: clientEnvVariables.parse(process.env)
+		: clientEnvVariables.parse(import.meta.env)
 ) as z.infer<typeof envVariables>;
 
 declare global {

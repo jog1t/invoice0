@@ -10,7 +10,7 @@ export const auth = betterAuth({
 		provider: "pg",
 	}),
 
-	plugins: [jwt(), organization()],
+	plugins: [jwt({ jwks: { keyPairConfig: { alg: "RS256" } } }), organization()],
 
 	// services
 	emailAndPassword: {

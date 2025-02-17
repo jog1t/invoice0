@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+dotenv: ['.env', '{{.ENV}}/.env', '{{.HOME}}/.env']
+
+tasks:
+  dev-up:
+    description: Start development environment
+    deps: [dev:docker, dev:zero, dev:ui, dev:studio]
+
+  dev-nuke:
+    description: Stop development environment
+    run: once
+    dir: docker
+    cmds:
+      - docker-compose down -v -t 0
+
+  dev:docker:
+    description: Start Docker Compose
+    run: once
+    dir: docker
+    cmds:
+      - docker-compose up -d
+  
+  dev:zero:
+    description: Start Zero Cache
+    run: once
+    cmds:
+      - yarn dev:zero-cache
+  
+  dev:ui:
+    description: Start UI
+    run: once
+    cmds:
+      - yarn dev:ui
+
+  dev:studio:
+    description: Start Drizzle Studio
+    run: once
+    cmds:
+      - yarn db studio

@@ -125,5 +125,10 @@ export const permissions = definePermissions<AuthData, Schema>(schema, () => {
 				delete: NOBODY_CAN,
 			},
 		},
+		organization: {
+			row: {
+				select: NOBODY_CAN,
+			},
+		},
 	};
 });
