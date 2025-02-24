@@ -3589,9 +3589,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"better-auth@npm:^1.1.16":
-  version: 1.1.16
-  resolution: "better-auth@npm:1.1.16"
+"better-auth@npm:^1.1.20":
+  version: 1.1.20
+  resolution: "better-auth@npm:1.1.20"
   dependencies:
     "@better-auth/utils": "npm:0.2.3"
     "@better-fetch/fetch": "npm:1.1.12"
@@ -3605,7 +3605,7 @@ __metadata:
     kysely: "npm:^0.27.4"
     nanostores: "npm:^0.11.3"
     zod: "npm:^3.24.1"
-  checksum: 10c0/d935d504aa0a2e1e5055be12f52fd9db05cbc286c8249f152273b8503a31026c2cf6da93a22c0ac403b91fd8bb48dfab7b074f2616c41a9af98fe907aa116065
+  checksum: 10c0/f5b5e3c00930fb96b408454512edd32cbe882fdcb01419750e6a0c195f1d6473d281fed193bfeaaa9b97fca2b71a224001d32c63ca5972088d198cce078bc416
   languageName: node
   linkType: hard
 
@@ -5725,7 +5725,7 @@ __metadata:
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    better-auth: "npm:^1.1.16"
+    better-auth: "npm:^1.1.20"
     drizzle-kit: "npm:^0.30.4"
     drizzle-orm: "npm:^0.39.2"
     drizzle-zero: "patch:drizzle-zero@npm%3A0.4.0#~/.yarn/patches/drizzle-zero-npm-0.4.0-cb91376d63.patch"
