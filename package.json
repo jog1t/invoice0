@@ -20,7 +20,7 @@
 		"@tanstack/react-router": "^1.99.9",
 		"@tanstack/router-devtools": "^1.99.9",
 		"@tanstack/start": "^1.99.12",
-		"better-auth": "^1.1.16",
+		"better-auth": "^1.2.10",
 		"drizzle-orm": "^0.39.2",
 		"drizzle-zero": "patch:drizzle-zero@npm%3A0.4.0#~/.yarn/patches/drizzle-zero-npm-0.4.0-cb91376d63.patch",
 		"nodemailer": "^6.10.0",
